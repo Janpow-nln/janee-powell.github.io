@@ -20,15 +20,14 @@
  */
 
 function reverseString(input) {
-    // YOUR CODE GOES BELOW HERE //
-    var newInput;
-    for(var i = 0; i<= input.lenght; i++) {
-      
-    }
-    
-    
-    
-    // YOUR CODE GOES ABOVE HERE //
+  // YOUR CODE GOES BELOW HERE //
+  var reversed = input.split("").reverse();
+  //reverse the array
+  return reversed.join("");
+
+
+
+  // YOUR CODE GOES ABOVE HERE //
 }
 
 

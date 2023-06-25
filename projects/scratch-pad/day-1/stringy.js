@@ -57,11 +57,7 @@ function toDashCase(string) {
     // YOUR CODE BELOW HERE //
 
 
-    // new string in all lower case
-   // the input str with dashes
-    var newstring =string.replace(' ', '-')
-     // new string in all lower case
-    return newstring.toLowerCase();
+    return string.toLowerCase().replace(/\s+/g, '-');
 
 
     // YOUR CODE ABOVE HERE //
@@ -87,7 +83,7 @@ function beginsWith(string, char) {
         return true;
     } else if (string.charAt(0) === char.toUpperCase()) {
         return true;
-    }else {
+    } else {
         return false;
     }
 
@@ -108,15 +104,14 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-//if first letter of string match the char letter return true
-    if (string.substr(string.length) === char.toLowerCase()) {
+    //if first letter of string match the char letter return true
+    if (char.toLowerCase() === string[string.length - 1] || char.toUpperCase() === string[string.length - 1]) {
         return true;
-    } else if (string.substr(string.length) === char.toUpperCase()) {
-        return true;
-    }else {
+    } else {
         return false;
     }
-    
+
+
     // YOUR CODE ABOVE HERE //
 }
 
@@ -128,7 +123,7 @@ function endsWith(string, char) {
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
-
+    return stringOne + stringTwo;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -146,7 +141,7 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-
+    return args.join("");
 
     // YOUR CODE ABOVE HERE //
 }
@@ -162,7 +157,11 @@ function join(stringOne, stringTwo) {
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    if (stringOne.length > stringTwo.length) {
+        return stringOne
+    } else {
+        return stringTwo;
+    }
 
 
     // YOUR CODE ABOVE HERE //
@@ -178,7 +177,13 @@ function longest(stringOne, stringTwo) {
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
-
+    if (stringOne < stringTwo) { 
+        return 1;
+    } else if (stringOne === stringTwo) {
+        return 0;
+    } else if (stringOne > stringTwo) { 
+        return -1;
+    }
 
     // YOUR CODE ABOVE HERE //
 }
@@ -193,7 +198,13 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    if (stringOne > stringTwo) { 
+        return 1;
+    } else if (stringOne === stringTwo) { 
+        return 0;
+    } else if (stringOne < stringTwo) { 
+        return -1;
+    }
 
 
 
@@ -202,7 +213,7 @@ function sortDescending(stringOne, stringTwo) {
 
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
-if((typeof process !== 'undefined') &&
+if ((typeof process !== 'undefined') &&
     (typeof process.versions.node !== 'undefined')) {
     // here, export any references you need for tests //
     module.exports.length = length;
