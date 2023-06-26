@@ -13,10 +13,11 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+
+    return function (value) {
+        return value > base;
+    }
+
     // YOUR CODE ABOVE HERE //
 }
 
@@ -27,10 +28,10 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+
+    return function (value) {
+        return value < base;
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -41,10 +42,22 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    return function(string) {   
+        if (string[0].toLowerCase() === startsWith) {
+            return true;
+        } else if (string[0].toUpperCase() === startsWith) {
+          return true;  
+        } else {
+            return false;
+        }
+    }
+
+
+
+
+
+
+
     // YOUR CODE ABOVE HERE //
 }
 
@@ -55,10 +68,18 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    return function(string) {
+        if (string[string.length - 1].toLowerCase() === endsWith) {
+            return true;
+        } else if (string[string.length - 1].toUpperCase() === endsWith) {
+            return true;
+        } else {
+            return false;
+        }   
+    }
+
+
+
     // YOUR CODE ABOVE HERE //
 }
 
@@ -71,10 +92,15 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    var string = [];
+    for (var i = 0; i < strings.length; i++) {
+        string.push(modify(strings[i]));
+
+    }
+    return string;
+
+
+
     // YOUR CODE ABOVE HERE //
 }
 
@@ -89,15 +115,21 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    for (var i = 0; i < strings.length; i++) {
+        if (!test(strings[i])) {
+         return false;
+        }
+     }
+     
+      return true;
+
+
+
     // YOUR CODE ABOVE HERE //
 }
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
-if((typeof process !== 'undefined') &&
+if ((typeof process !== 'undefined') &&
     (typeof process.versions.node !== 'undefined')) {
     // here, export any references you need for tests //
     module.exports.createGreaterThanFilter = createGreaterThanFilter;
@@ -105,5 +137,5 @@ if((typeof process !== 'undefined') &&
     module.exports.createStartsWithFilter = createStartsWithFilter;
     module.exports.createEndsWithFilter = createEndsWithFilter;
     module.exports.modifyStrings = modifyStrings;
-    module.exports.allStringsPass = allStringsPass;   
+    module.exports.allStringsPass = allStringsPass;
 }
