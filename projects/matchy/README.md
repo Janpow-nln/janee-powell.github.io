@@ -2,7 +2,7 @@
 
 ## Goals
  - To work in pairs solving real-world programming problems.
- - To practice creating, accessing and processing data structures, Objects and Arrays, in JavaScript.
+ - To practice creating, accessing and processing data structures, Objects and Arrays, in JavaScript. 
  - Practice modeling types of things, animals, using Objects.
  - Practice storing Objects in Arrays, and searching, adding, replacing, and removing these Objects based on criteria.
  - Getting use to using `console.log` to inspect your work and debug your code.

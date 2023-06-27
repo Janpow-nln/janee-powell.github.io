@@ -2,7 +2,7 @@
 
 # Git Commands
  git add -A
- git commit -m "matchy pt1 1-5 complete"
+ git commit -m "matchy pt1 complete"
  git push
 
  # How to Install Projects Using os install

@@ -56,15 +56,46 @@ animal.noises = noises;
 //////////////////////////////////////////////////////////////////////
 // Step 6 - A Collection of Animals //////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-var animals= [];
+var animals = [];
 animals.push(animal);
+console.log(animals);
 
+var duck = {
+  species: 'duck',
+  name: 'Jerome',
+  noises: ['quack', 'honk', 'sneeze', 'woosh']
+};
 
+animals.push(duck);
 
+var cat = {
+  species: 'cat',
+  name: 'Jack',
+  noises: ['meow', 'puur', 'sneeze']
+};
+animals.push(cat);
+var bird = {
+  species: 'bird',
+  name: 'Jay',
+  noises: ['tweet', 'peck', 'flap']
+};
+animals.push(bird);
 //////////////////////////////////////////////////////////////////////
 // Step 7 - Making Friends ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+var friends = [];
+// array is a great way to making a list 
+function getRandom(array) {
+  let num = array.length
+  return Math.floor(Math.random() * num)
+}
+console.log(animals[getRandom(animals)].name);
 
+friends.push(animals[getRandom(animals)]["name"])
+
+console.log(friends); 
+animals[1]["friends"] = friends;
+console.log(animals[1]["friends"]);
 
 
 /**
@@ -78,11 +109,11 @@ animals.push(animal);
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 var animal, noises, animals, friends, getRandom;
-if((typeof process !== 'undefined') &&
-   (typeof process.versions.node !== 'undefined')) {
-     module.exports.animal = animal || null;
-     module.exports.noises = noises || null;
-     module.exports.animals = animals || null;
-     module.exports.friends = friends || null;
-     module.exports.getRandom = getRandom || null;
+if ((typeof process !== 'undefined') &&
+  (typeof process.versions.node !== 'undefined')) {
+  module.exports.animal = animal || null;
+  module.exports.noises = noises || null;
+  module.exports.animals = animals || null;
+  module.exports.friends = friends || null;
+  module.exports.getRandom = getRandom || null;
 }
