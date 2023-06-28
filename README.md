@@ -2,8 +2,9 @@
 
 # Git Commands
  git add -A
- git commit -m "matchy pt1 complete"
+ git commit -m "saving"
  git push
+
 
  # How to Install Projects Using os install
 1) In terminal, type = code ~/.bashrc
