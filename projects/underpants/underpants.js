@@ -20,7 +20,7 @@ var _ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-
+_.identity = value => value;
 
 /** _.typeOf
 * Arguments:
@@ -41,7 +41,25 @@ var _ = {};
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-
+_.typeOf = function(value){
+    if (Array.isArray(value)) {
+        return 'array';
+    } else if (value === null) {
+        return 'null';
+    } else if (typeof value === 'object'){
+        return 'object';
+    } else if (typeof value === 'string') {
+        return 'string'
+    } else if (typeof value === 'undefined') {
+        return 'undefined';
+    } else if (typeof value === 'number') {
+        return 'number';
+    } else if (typeof value === 'boolean') {
+        return 'boolean';
+    } else if (typeof value === 'function') {
+        return 'function';
+    }
+}
 
 /** _.first
 * Arguments:
@@ -60,7 +78,24 @@ var _ = {};
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
+_.first = function (array, number) {
 
+    if (!Array.isArray(array)) {
+        return [];
+    } else if (!number) {
+        return array[0];
+    } else if (number > array.length) {
+        return array;
+    } else {
+        let items = [];
+
+        for (let x = 0; x < number; x++) {
+            items.push(array[x]);
+        }
+        return items;
+    }
+
+}
 
 /** _.last
 * Arguments:

@@ -2,7 +2,7 @@
 
 # Git Commands
  git add -A
- git commit -m "saving"
+ git commit -m "Eloquent Javascript complete"
  git push
 
 
