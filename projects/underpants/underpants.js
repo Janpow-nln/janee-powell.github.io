@@ -41,12 +41,12 @@ _.identity = value => value;
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-_.typeOf = function(value){
+_.typeOf = function (value) {
     if (Array.isArray(value)) {
         return 'array';
     } else if (value === null) {
         return 'null';
-    } else if (typeof value === 'object'){
+    } else if (typeof value === 'object') {
         return 'object';
     } else if (typeof value === 'string') {
         return 'string'
@@ -115,6 +115,22 @@ _.first = function (array, number) {
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function (array, number) {
+    if (!Array.isArray(array)) {
+        return [];
+    }
+    if (number === undefined || isNaN(number)) {
+        return array[array.length - 1];
+    }
+    if (number < 0) {
+        return [];
+    }
+    if (number > array.length) {
+        return array;
+    }
+    return array.slice(array.length - number);
+}
+
 
 /** _.indexOf
 * Arguments:
@@ -132,6 +148,14 @@ _.first = function (array, number) {
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function (array, value) {
+    for (let i = 0; i < array.length; i++) {
+        if (value === array[i]) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** _.contains
 * Arguments:
@@ -148,6 +172,9 @@ _.first = function (array, number) {
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function (array, value) {
+    return array.includes(value) ? true : false;
+}
 
 /** _.each
 * Arguments:
@@ -165,6 +192,18 @@ _.first = function (array, number) {
 *      -> should log "a" "b" "c" to the console
 */
 
+_.each = function (collection, func) {
+    if (Array.isArray(collection)) {
+        for (var i = 0; i < collection.length; i++) {
+            func(collection[i], i, collection);
+        }
+    } else if (typeof collection === 'object') {
+        for (var key in collection) {
+            func(collection[key], key, collection);
+        }
+    }
+}
+
 
 /** _.unique
 * Arguments:
@@ -176,6 +215,18 @@ _.first = function (array, number) {
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function (array) {
+    let dupe = [];
+
+    for (let x = 0; x < array.length; x++) {
+        if (_.indexOf(dupe, array[x]) === -1) {
+            dupe.push(array[x]);
+
+        }
+        
+    }
+    return dupe;
+}
 
 /** _.filter
 * Arguments:
@@ -340,8 +391,8 @@ _.first = function (array, number) {
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-if((typeof process !== 'undefined') &&
-   (typeof process.versions.node !== 'undefined')) {
+if ((typeof process !== 'undefined') &&
+    (typeof process.versions.node !== 'undefined')) {
     // here, export any references you need for tests //
     module.exports = _;
 }
