@@ -216,17 +216,16 @@ _.each = function (collection, func) {
 */
 
 _.unique = function (array) {
-    let dupe = [];
-
-    for (let x = 0; x < array.length; x++) {
-        if (_.indexOf(dupe, array[x]) === -1) {
-            dupe.push(array[x]);
-
-        }
-        
+    var result = [];
+    for (var i = 0; i < array.length; i++) {
+      if (_.indexOf(result, array[i]) === -1) {
+        result.push(array[i]);
+      }
     }
-    return dupe;
+    return result;
 }
+
+
 
 /** _.filter
 * Arguments:
