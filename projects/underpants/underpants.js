@@ -218,9 +218,9 @@ _.each = function (collection, func) {
 _.unique = function (array) {
     var result = [];
     for (var i = 0; i < array.length; i++) {
-      if (_.indexOf(result, array[i]) === -1) {
-        result.push(array[i]);
-      }
+        if (_.indexOf(result, array[i]) === -1) {
+            result.push(array[i]);
+        }
     }
     return result;
 }
@@ -243,6 +243,15 @@ _.unique = function (array) {
 *   use _.each in your implementation
 */
 
+_.filter = function (array, func) {
+    let result = [];
+    for (let i = 0; i < array.length; i++) {
+        if (func(array[i], i, array) === true) {
+            result.push(array[i])
+        }
+    }
+    return result;
+}
 
 /** _.reject
 * Arguments:
@@ -257,6 +266,15 @@ _.unique = function (array) {
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
+_.reject = function (array, func) {
+    let result = [];
+    for (let i = 0; i < array.length; i++) {
+        if (func(array[i], i, array) === false) {
+            result.push(array[i])
+        }
+    }
+    return result;
+}
 
 /** _.partition
 * Arguments:
@@ -277,6 +295,22 @@ _.unique = function (array) {
 }
 */
 
+_.partition = function (array, test) {
+    let output = [];
+    let truthy = [];
+    let falsy = [];
+    for (let i = 0; i < array.length; i++) {
+        if (test(array[i], i, array)) {
+            truthy.push(array[i]);
+        } else {
+            falsy.push(array[i]);
+        }
+    }
+
+    output.push(truthy);
+    output.push(falsy);
+    return output;
+}
 
 /** _.map
 * Arguments:
@@ -294,6 +328,19 @@ _.unique = function (array) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function (collection, func) {
+    let output = [];
+    if (Array.isArray(collection)) {
+        for (let i = 0; i < collection.length; i++) {
+            output.push(func(collection[i], i, collection))
+        }
+    } else {
+        for (let key in collection) {
+            output.push(func(collection[key], key, collection));
+        }
+    }
+    return output;
+}
 
 /** _.pluck
 * Arguments:
@@ -306,6 +353,12 @@ _.unique = function (array) {
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
+_.pluck = function (array, property) {
+    let result = _.map(array, function (item) {
+        return item[property]
+    })
+    return result;
+}
 
 /** _.every
 * Arguments:
@@ -328,6 +381,11 @@ _.unique = function (array) {
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
+_.every = function (collection, func) {
+    if (Array.isArray(collection)) {
+        for() { }
+    }
+}
 
 /** _.some
 * Arguments:
