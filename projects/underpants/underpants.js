@@ -383,7 +383,7 @@ _.pluck = function (array, property) {
 
 _.every = function (collection, func) {
     if (Array.isArray(collection)) {
-        for() { }
+        
     }
 }
 
